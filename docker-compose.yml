@@ -1,6 +1,6 @@
 services:
     nopcommerce_web:
-        build: .
+        image: docker push neeraj2806/excellence
         container_name: nopcommerce
         ports:
             - "80:80"
