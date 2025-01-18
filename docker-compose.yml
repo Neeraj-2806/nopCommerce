@@ -5,7 +5,7 @@ services:
         ports:
             - "80:80"
         depends_on:
-            - nopcommerce_database
+            - nop_database
     nop_database:
         image: "mysql:latest"
         container_name: nopcommerce_mysql_server
