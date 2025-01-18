@@ -1,5 +1,5 @@
 services:
-    nop_web:
+    nop_comm_web:
         image: neeraj2806/excellence:latest
         container_name: nopcommerce
         ports:
