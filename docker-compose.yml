@@ -1,19 +1,26 @@
 services:
-    nop_web:
+    nopcommerce_web:
         image: neeraj2806/excellence:latest
         container_name: nopcommerce
         ports:
             - "80:80"
-        depends_on:
-            - nop_database
-    nop_database:
-        image: "mysql:latest"
-        container_name: nopcommerce_mysql_server
-        restart: "always"
         environment:
-          MYSQL_ROOT_PASSWORD: "nopCommerce_db_password"
-        volumes: 
+           DB_HOST: nopcommerce_database
+           DB_PORT: 3306
+           DB_USER: root
+           DB_PASSWORD: "nopCommerce_db_password"
+           DB_NAME: nop_db
+        depends_on:
+            - nopcommerce_database
+    nopcommerce_database:
+        image: "mysql:latest"
+        container_name: mysql_db
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: "nopCommerce_db_password"
+            MYSQL_DATABASE: nop_db
+        volumes:
           - nopcommerce_data:/var/lib/mysql
 
 volumes:
-  nopcommerce_data:            
+  nopcommerce_data:
